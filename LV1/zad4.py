@@ -11,6 +11,7 @@ def getAvgConfidence(path = ""):
                 confs.append(float(line[len(substr) : ]))
 
         print(f"Average {substr}{sum(confs) / len(confs)}") 
+        file.close()
 
 getAvgConfidence("mbox.txt")
 getAvgConfidence("mbox-short.txt")

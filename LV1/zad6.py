@@ -18,5 +18,6 @@ with open("SMSSpamCollection.txt") as file:
             words = line.split(" ")
             hamWordCount += len(words)
             hamCount += 1
+    file.close()
 
 print(f"HamAvg: {hamWordCount / hamCount}\nSpamAvg: {spamWordCount / spamCount}\nSpam ending with !: {exclamCount}")
