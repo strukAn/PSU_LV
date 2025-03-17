@@ -3,18 +3,18 @@ import matplotlib.pyplot as plt
 
 def board(size: int, x_squares: int, y_squares: int) -> np.matrix:
     row = np.zeros( (size, size) )
+    square = np.zeros( (size, size) )
+    _square = np.ones( (size, size) )
     
     white = True
     for i in range(x_squares - 1):
         if white:
-            new = np.ones( (size, size) )
+            row = np.hstack( (row, _square) )
         else:
-            new = np.zeros( (size, size) )
+            row = np.hstack( (row, square) )
 
         white = not white            
 
-        row = np.hstack( (row, new) )
-    
     _row = 1 - row
     img = row
     
@@ -27,11 +27,10 @@ def board(size: int, x_squares: int, y_squares: int) -> np.matrix:
             
         white = not white
 
+    return img * 255
     
-    plt.figure()
+img = board(250, 5, 5)
 
-    plt.imshow(img, cmap = "gray", vmax = 1, vmin = 0)
-    plt.show()
-    
-
-board(250, 10, 10)
+plt.figure()
+plt.imshow(img, cmap = "gray", vmax = 255, vmin = 0)
+plt.show()
