@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 def board(size: int, x_squares: int, y_squares: int) -> np.matrix:
     row = np.zeros( (size, size) )
     square = np.zeros( (size, size) )
-    _square = np.ones( (size, size) )
+    _square = np.ones( (size, size) ) * 255
     
     white = True
     for i in range(x_squares - 1):
@@ -15,7 +15,7 @@ def board(size: int, x_squares: int, y_squares: int) -> np.matrix:
 
         white = not white            
 
-    _row = 1 - row
+    _row = 255 - row
     img = row
     
     white = True
@@ -26,8 +26,8 @@ def board(size: int, x_squares: int, y_squares: int) -> np.matrix:
             img = np.vstack( (img, row) )
             
         white = not white
-
-    return img * 255
+    
+    return img
     
 img = board(250, 5, 5)
 
